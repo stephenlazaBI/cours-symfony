@@ -3,11 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <p>Salut!</p>
+        {% include 'layout/header.html.twig' %}
         {% block body %}{% endblock %}
+        <script src="/assets/js/index.js"></script>
         {% block javascripts %}{% endblock %}
+        {% include 'layout/footer.html.twig' %}
     </body>
 </html>
