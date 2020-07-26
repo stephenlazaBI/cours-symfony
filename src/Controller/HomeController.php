@@ -9,18 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/hello/{name}/{age}/{adresse}", name="home")
+     * @Route("/hello", name="home")
      */
-    public function index(Request $request)
+    public function index()
     {
 
-        $name = $request->get('name');
-        $age = $request->get('age');
-        $adresse = $request->get('adresse');
         return $this->render('home/index.html.twig', [
-            'name' => $name,
-            'age' => $age,
-            'adresse' => $adresse,
+            'controller_name' => 'HomeController',
+
         ]);
     }
 
