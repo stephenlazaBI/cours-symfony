@@ -20,5 +20,13 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/", name="blog")
+     */
+    public function blog()
+    {
+        return $this->render('blog/index.html.twig');
+    }
+
 
 }
