@@ -12,8 +12,20 @@ class BlogController extends AbstractController
      */
     public function index()
     {
+        $onblog = true;
         return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
+            'onblog' => $onblog,
+        ]);
+    }
+
+    /**
+     * @Route("/creation_blog", name="blog_create")
+     */
+    public function creation()
+    {
+        $isCreate = true;
+        return $this->render('blog/creation.html.twig', [
+            'oncreate' => $isCreate,
         ]);
     }
 }

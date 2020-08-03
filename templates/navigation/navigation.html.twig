@@ -9,20 +9,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="{{ path("home") }}">Home
+
+                    <li class="nav-item {% if onacceuil is defined and onacceuil == true %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase  text-expanded"  href="{{ path("home") }}">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="{{ path("blog_list") }}">Blog</a>
+                    <li class="nav-item {% if onblog is defined and onblog == true %} active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase  text-expanded " href="{{ path("blog_list") }}">Blog</a>
                     </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="{{ path("contact") }}">Contact</a>
+                    <li class="nav-item {% if oncreate is defined and oncreate == true %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase  text-expanded"  href="{{ path("blog_create") }}">Creation Blog</a>
                     </li>
-                    <li class="nav-item px-lg-4">
-                        <a class="nav-link text-uppercase text-expanded" href="#">Admin</a>
+                    <li class="nav-item {% if oncontact is defined and oncontact == true %}active{% endif %} px-lg-4">
+                        <a class="nav-link text-uppercase  text-expanded"  href="{{ path("contact") }}">Contact</a>
                     </li>
+
                 </ul>
             </div>
         </div>
