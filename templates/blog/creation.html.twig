@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="container">
+    {{ form_start(form) }}
+        <div class="form-horizontal">
+            {{ form_widget(form) }}
 
+            <p><button class="btn btn-success"> Creer </button></p>
+        </div>
+
+        {{ form_end(form) }}
+        <p><a href="{{ path('blog_list') }}"> Annuler </a></p>
+    </div>
 {% endblock %}

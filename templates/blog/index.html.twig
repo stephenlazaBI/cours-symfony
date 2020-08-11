@@ -3,6 +3,64 @@
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-    {{ dump(onblog) }}
+    
     {% include 'section/section2.html.twig' %}
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <form method="POST" action="{{ path('blog_list') }}">
+                        <li class="nav-item px-lg-4">
+                            <div>
+                                <label for="recherche">RECHERCHER : </label>
+                                <input type="text" name="recherche" >
+                            </div>
+                        </li>
+                        <li class="nav-item px-lg-4">
+                            <input type="submit" value="recherche">
+                        </li>
+                        <li class="nav-item px-lg-4">
+                            <input type="submit" value="retour liste" onclick="{{ path('blog_list') }}">
+                        </li>
+
+                    </form>
+                    <p><a class="btn btn-success" href="{{ path('blog_create') }}">Nouveau</a></p>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="articles">
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5">
+                        {% for article in articles %}
+                            <articles>
+                                <h2>{{ article.gettitre() }}</h2>
+                                <div class="metadata">Ecrit le {{ article.createdAt | date('m/d/Y') }} à {{ article.createdAt | date('H:i') }}</div>
+                                <div class="content">
+                                    <img src="{{ article.image }}" alt="">
+                                    {{ article.contenu | raw}}
+                                    <p>lololo</p>
+                                    <a href="{{ path("blog_show1", {'id':article.id}) }}" class="btn btn-primary">Lire la suite</a>
+                                    <p> </p>
+                                    <a href="{{ path("blog_edit", {'id':article.id}) }}" class="btn btn-primary">EDIT</a>
+                                    <a href="{{ path("blog_delete", {'id':article.id}) }}" class="btn btn-primary">Delete</a>
+                                    <p> </p>
+                                    <p>___________________________________________</p>
+                                </div>
+                            </articles>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
