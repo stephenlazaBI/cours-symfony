@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Form\Article1Type;
+use App\Form\CommentaireType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,13 +58,14 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
-        $form = $this->createForm(Article1Type::class, $article);
+        $formA = $this->createForm(Article1Type::class, $article);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
+        $formA->handleRequest($request);
+        if ($formA->isSubmitted() && $formA->isValid()){
             if (!$article->getId()){
                 $article->setCreatedAt(new \DateTime());
             }
+
             $repositori->persist($article);
             $repositori->flush();
             return $this->redirectToRoute ('blog_list');
@@ -73,7 +76,7 @@ class BlogController extends AbstractController
         return $this->render('blog/creation.html.twig', [
             'oncreate' => $isCreate,
             'article' => $article,
-            'form' => $form->createView(),
+            'formA' => $formA->createView(),
 
         ]);
     }
@@ -107,10 +110,30 @@ class BlogController extends AbstractController
             throw new NotFoundHttpException('Article introuvable');
         }
 
+        $com = new Commentaire();
+
+        $formC = $this->createForm(CommentaireType::class, $com);
+
+        $formC->handleRequest($request);
+        if ($formC->isSubmitted() && $formC->isValid()){
+
+            //$com->setArticle($article->addCommentaire());
+            $com->setArticle($article);
+
+            $repositori->persist($com);
+            $repositori->flush();
+            //return $this->redirectToRoute('blog_list');
+
+        }
+
+
         return $this->render('blog/show.html.twig', [
 
             'onblog' => $onblog,
+            'com' => $com,
             'article' => $article,
+            'formC' => $formC->createView(),
+            'cpt' => 0,
         ]);
     }
 

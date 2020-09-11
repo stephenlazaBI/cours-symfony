@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-description d-flex mr-auto">
+
+                    <div class="bg-faded p-5 rounded">
+                        <h1> INSCRITION</h1>
+                        {{ form_start(form) }}
+
+                        {{ form_row(form.nom, {'label':'NOM :', 'attr' : {'placeholder':'nom utilisateur '} }) }}
+                        {{ form_row(form.email, {'label':'EMAIL :','attr' : {'placeholder':'email utilisateur '} }) }}
+                        {{ form_row(form.password, {'label':'Mot de passe:','attr' : {'placeholder':'mot de passe '} }) }}
+                        {{ form_row(form.confirmpassword, {'label':'Confirmez mot de passe:','attr' : {'placeholder':'confirme mot de passe '} }) }}
+
+                        <p></p>
+                        <p><button class="btn btn-success"> s'inscrire </button></p>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,15 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-    {{ form_start(form) }}
-        <div class="form-horizontal">
-            {{ form_widget(form) }}
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-description d-flex mr-auto">
 
-            <p><button class="btn btn-success"> Creer </button></p>
+                    <div class="bg-faded p-5 rounded">
+                        <div class="container">
+                            {{ form_start(formA) }}
+                            <div class="form-horizontal">
+                                {{ form_widget(formA) }}
+
+                                <p><button class="btn btn-success"> Creer </button></p>
+                            </div>
+
+                            {{ form_end(formA) }}
+                            <p><a href="{{ path('blog_list') }}"> Annuler </a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        {{ form_end(form) }}
-        <p><a href="{{ path('blog_list') }}"> Annuler </a></p>
-    </div>
 {% endblock %}

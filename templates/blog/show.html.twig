@@ -17,12 +17,40 @@
                                 <p> </p>
                                 <p>hohohoho</p>
                                 <p>OUIOUINN</p>
-                                <a href="{{ path("blog_list") }}" class="btn btn-primary">Retour liste</a>
+                                <div class="container">
+                                    <a href="" >J'AIME</a>
+                                    <p> {{ cpt }}</p>
+                                </div>
                                 <p> </p>
                             </div>
                         </articles>
+                        <h2>-----COMMENTAIRES------</h2>
+                        <section id="commentaire">
+                            {% for com in article.commentaires %}
+                                <div class="row">
+                                    <div class="col-3">
+                                        {{ com.personne }}
+                                    </div>
+                                    <div class="col">
+                                        {{ com.contenu }}
+                                    </div>
+                                </div>
 
+                            {% endfor %}
+                        </section>
+                        <p>------------------------------------</p>
+                        <div class="container">
+                            {{ form_start(formC) }}
+                            <div class="form-horizontal">
+                                {{ form_widget(formC) }}
 
+                                <p><button class="btn btn-success" > Ajouter commentaire </button></p>
+                            </div>
+
+                            {{ form_end(formC) }}
+
+                        </div>
+                        <a href="{{ path("blog_list") }}" class="btn btn-primary">Retour liste</a>
                     </div>
                 </div>
             </div>
