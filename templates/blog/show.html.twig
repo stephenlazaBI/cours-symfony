@@ -24,7 +24,7 @@
                                 <p> </p>
                             </div>
                         </articles>
-                        <h2>-----COMMENTAIRES------</h2>
+                        <h2>-----COMMENTAIRES---{{ article.commentaires | length }}---</h2>
                         <section id="commentaire">
                             {% for com in article.commentaires %}
                                 <div class="row">
@@ -38,18 +38,25 @@
 
                             {% endfor %}
                         </section>
-                        <p>------------------------------------</p>
-                        <div class="container">
-                            {{ form_start(formC) }}
-                            <div class="form-horizontal">
-                                {{ form_widget(formC) }}
 
-                                <p><button class="btn btn-success" > Ajouter commentaire </button></p>
+                        {% if app.user %}
+
+                            <p>------------------------------------</p>
+                            <div class="container">
+                                {{ form_start(formC) }}
+                                <div class="form-horizontal">
+                                    {{ form_row(formC.personne) }}
+                                    {{ form_row(formC.contenu) }}
+                                    <p><button class="btn btn-success" > Ajouter commentaire </button></p>
+                                </div>
+
+                                {{ form_end(formC) }}
+
                             </div>
+                        {% else %}
+                            <h2>Connectez vous pour commenter</h2>
+                        {% endif %}
 
-                            {{ form_end(formC) }}
-
-                        </div>
                         <a href="{{ path("blog_list") }}" class="btn btn-primary">Retour liste</a>
                     </div>
                 </div>

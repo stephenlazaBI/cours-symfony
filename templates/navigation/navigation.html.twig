@@ -28,6 +28,16 @@
                         <a class="nav-link text-uppercase  text-expanded"  href="{{ path("security_inscription") }}">Inscription</a>
                     </li>
 
+                    {% if not app.user %}
+                        <li class="nav-item px-lg-4">
+                            <a class="nav-link text-uppercase  text-expanded"  href="{{ path("security_login") }}">Connexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item px-lg-4">
+                            <a class="nav-link text-uppercase  text-expanded"  href="{{ path("security_logout") }}">Deconnexion</a>
+                        </li>
+                    {% endif%}
+
                 </ul>
             </div>
         </div>
