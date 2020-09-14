@@ -45,6 +45,8 @@ class SecurityController extends AbstractController
 
             $repositori->persist($user);
             $repositori->flush();
+
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render ('security/registration.html.twig',[
@@ -52,4 +54,12 @@ class SecurityController extends AbstractController
             'oni' => $oni,
             ]);
     }
+
+    /**
+     * @Route("/connexion" ,name="security_login")
+     */
+    public function login (){
+        return $this->render('security/login.html.twig');
+    }
 }
+
